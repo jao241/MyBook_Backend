@@ -1,8 +1,8 @@
-import { Request, Response, Router } from "express";
+import express, { Request, Response, Router } from "express";
 import service from "../service/service";
 
 const is_alive = true;
-
+const jsonFormat = express.json();
 const routes = Router();
 
 routes.use("/is_alive", (request:Request, response:Response)=>{
@@ -12,15 +12,13 @@ routes.use("/is_alive", (request:Request, response:Response)=>{
     });
 });
 
-routes.post("/add_comentario/:id", async (request:Request, response:Response)=>{
+routes.post("/add_comentario", jsonFormat,async (request:Request, response:Response)=>{
     if(is_alive){
-        //const { feed_id, usuario, datetime, conteudo } = request.body;
+        const { id, feed_id, usuario, datetime, conteudo } = request.body;
+        console.log(request.body)
         const comentarioService = new service();
-         console.log(request.body);
-        //await comentarioService.execute({feed_id, usuario, datetime, conteudo});
-        response.json({
-            message: "Data Saved"
-        });
+        const comentario = await comentarioService.execute({id, feed_id, usuario, datetime, conteudo});
+        response.json(comentario);
     }else response.json({message: "Serviço indisponível no momento."});
 });
 

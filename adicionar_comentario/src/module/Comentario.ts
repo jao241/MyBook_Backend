@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity("comentarios")
 export default class Comentario{
-    @PrimaryGeneratedColumn('increment')
+    @PrimaryColumn('int4')
     id:number;
     @Column('int4')
     feed_id:number;
