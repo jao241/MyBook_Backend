@@ -6,7 +6,7 @@ import Cors from "cors";
 import routes from "./route/route";
 
 const app = Express();
-const port = 3001;
+const port = 3003;
 
 app.use(Cors());
 app.use(routes);
