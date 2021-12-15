@@ -14,9 +14,12 @@ routes.use("/is_alive", (request:Request, response:Response)=>{
 
 routes.post("/add_comentario", jsonFormat,async (request:Request, response:Response)=>{
     if(is_alive){
-        const { id, feed_id, usuario, datetime, conteudo } = request.body;
+        const {id, feed_id, usuario, datetime, conteudo} = request.body;
         const comentarioService = new service();
         const comentario = await comentarioService.execute({id, feed_id, usuario, datetime, conteudo});
+        response.json({
+            message: "comentário salvo"
+        })
     }else response.json({message: "Serviço indisponível no momento."});
 });
 

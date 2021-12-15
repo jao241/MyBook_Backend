@@ -12,11 +12,12 @@ routes.use("/is_alive", (request:Request, response:Response)=>{
     });
 });
 
-routes.patch("/remove_like", jsonFormat,async (request:Request, response:Response)=>{
+routes.patch("/remove_like/:id", jsonFormat,async (request:Request, response:Response)=>{
     if(is_alive){
-        const { id } = request.body;
+        const { id } = request.params;
+        const feed_id = Number(id);
         const feedService = new service();
-        await feedService.execute(id);
+        await feedService.execute(feed_id);
         response.json({
             message: "Like removido!"
         })

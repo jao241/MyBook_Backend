@@ -12,11 +12,12 @@ routes.use("/is_alive", (request:Request, response:Response)=>{
     });
 });
 
-routes.post("/remove_comentario", jsonFormat,async (request:Request, response:Response)=>{
+routes.delete("/remove_comentario/:id", jsonFormat,async (request:Request, response:Response)=>{
     if(is_alive){
-        const { id } = request.body;
+        const { id } = request.params;
+        const comentarioId = Number(id);
         const comentarioService = new service();
-        await comentarioService.execute(id);
+        await comentarioService.execute(comentarioId);
         response.json({
             message: "Comentário removido!"
         });
