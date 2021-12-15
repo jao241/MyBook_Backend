@@ -11,5 +11,5 @@ const port = 3003;
 app.use(Cors());
 app.use(routes);
 
-app.listen(port, ()=> console.log("Service comments running."));
+app.listen(port, () => console.log("Service comments running."));
 

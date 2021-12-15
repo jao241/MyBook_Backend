@@ -16,9 +16,9 @@ routes.get("/comentarios/:id", async (request:Request, response:Response)=>{
     if(is_alive){
         const { id } = request.params;
         const feed_id = Number(id);
-        const feedService = new service();
-        const feeds = await feedService.execute(feed_id);
-        response.json(feeds);
+        const comentarioService = new service();
+        const coments = await comentarioService.execute(feed_id);
+        response.json(coments);
     }else response.json({message: "Serviço indisponível no momento."});
 });
 
