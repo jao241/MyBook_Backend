@@ -1,0 +1,62 @@
+version: '2'
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    container_name: postgresDB
+    environment:
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+  feeds:
+    build: ./feeds
+    container_name: feeds
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres_db
+  descricao_feed:
+    build: ./descricao_feed
+    container_name: descricao_feed
+    restart: always
+    ports:
+      - "3002:3002"
+    depends_on:
+      - postgres_db
+  comentarios:
+    build: ./comentarios
+    container_name: comentarios
+    restart: always
+    ports:
+      - "3003:3003"
+    depends_on:
+      - postgres_db
+  adicionar_comentario:
+    build: ./adicionar_comentario
+    container_name: adicionar_comentario
+    restart: always
+    ports:
+      - "3004:3004"
+    depends_on:
+      - postgres_db
+  remover_comentario:
+    build: ./remover_comentario
+    container_name: remover_comentario
+    restart: always
+    ports:
+      - "3005:3005"
+  adicionar_like:
+    build: ./adicionar_like
+    container_name: adicionar_like
+    restart: always
+    ports:
+      - "3006:3006"
+  remover_like:
+    build: ./remover_like
+    container_name: remover_like
+    restart: always
+    ports:
+      - "3007:3007"
+    depends_on:
+      - postgres_db
