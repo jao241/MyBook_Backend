@@ -28,6 +28,6 @@ Obs: Estou usando o SO linux Ubuntu
   
 - 6° Abra a aplicação Mybook_Frontend e execute-a
 
-OBS: Também é possível utilizar outros tipos de clientes como o Insomnia para testar as rotas usando localhost:numero da porta/rota, exemplo:
+  OBS: Também é possível utilizar outros tipos de clientes como o Insomnia para testar as rotas usando localhost:numero da porta/rota, exemplo:
 
-  localhost:3001/feeds
+    localhost:3001/feeds
