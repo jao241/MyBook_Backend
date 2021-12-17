@@ -12,8 +12,10 @@ Obs: Estou usando o SO linux Ubuntu
 - 3° Clone este repositório
 - 4° Abra o cmd, navege até o repositório e execute o seguinte comando:
 - 
-  docker-compose up -d ou sudo docker-compose up -d
-  ---
+  $ docker-compose up -d 
+  ou
+  $ sudo docker-compose up -d
+ 
   
   OBS: Caso deseje ver no terminal o build das imagens, a iniciação dos containers e os logs, retire o -d do comando
   
