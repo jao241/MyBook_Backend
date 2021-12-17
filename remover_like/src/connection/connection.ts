@@ -4,7 +4,7 @@ import Produtos from "../module/Produtos";
 export default async function connection(){
     await createConnection({
         type: "postgres",
-        host: "localhost",
+        host: "172.16.1.1",
         port: 5432,
         username: "postgres",
         password: "1234",

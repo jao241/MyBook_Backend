@@ -1,5 +1,6 @@
 version: '2'
 services:
+
   postgres_db:
     image: postgres
     restart: always
@@ -8,6 +9,10 @@ services:
       - POSTGRES_PASSWORD=1234
     ports:
       - "5432:5432"
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.1"
+
   feeds:
     build: ./feeds
     container_name: feeds
@@ -16,6 +21,10 @@ services:
       - "3001:3001"
     depends_on:
       - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.2"
+
   descricao_feed:
     build: ./descricao_feed
     container_name: descricao_feed
@@ -24,6 +33,10 @@ services:
       - "3002:3002"
     depends_on:
       - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.3"
+
   comentarios:
     build: ./comentarios
     container_name: comentarios
@@ -32,6 +45,10 @@ services:
       - "3003:3003"
     depends_on:
       - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.4"
+
   adicionar_comentario:
     build: ./adicionar_comentario
     container_name: adicionar_comentario
@@ -40,18 +57,34 @@ services:
       - "3004:3004"
     depends_on:
       - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.5"
+
   remover_comentario:
     build: ./remover_comentario
     container_name: remover_comentario
     restart: always
     ports:
       - "3005:3005"
+    depends_on:
+      - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.6"
+
   adicionar_like:
     build: ./adicionar_like
     container_name: adicionar_like
     restart: always
     ports:
       - "3006:3006"
+    depends_on:
+      - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.7"
+
   remover_like:
     build: ./remover_like
     container_name: remover_like
@@ -60,3 +93,13 @@ services:
       - "3007:3007"
     depends_on:
       - postgres_db
+    networks:
+      mybook:
+        ipv4_address: "172.16.1.8"
+
+networks:
+  mybook:
+    ipam:
+      driver: default
+      config: 
+        - subnet: '172.16.1.0/16'
