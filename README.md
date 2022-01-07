@@ -20,9 +20,9 @@ Obs: Estou usando o SO linux Ubuntu
   
 - 5° Após a execução do comando acima, execute o seguinte comando para adicionar dados ao banco:
 
-  docker exec -i postgresBD psql -U postgres < ./script.sql 
+  docker exec -i postgresDB psql -U postgres < ./script.sql 
   ou 
-  sudo docker exec -i postgresBD psql -U postgres < ./script.sql
+  sudo docker exec -i postgresDB psql -U postgres < ./script.sql
   
   OBS: Após ser executado pela primeira vez, os dados também serão salvos no volume do container, então caso pare o container e depois reinicie os dados persistirão, mas caso não ocorra, basta executar o comando acima uma segunda vez.
   
